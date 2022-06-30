@@ -2,7 +2,6 @@
 //
 // Задача 2
 
-/*
 int num1, num2;
 Console.Write("Введите первое число: ");
 num1 = Convert.ToInt32(Console.ReadLine());
@@ -49,7 +48,7 @@ if (num3 > max_number)
     max_number = num3;
 
 Console.WriteLine("Максимальное число - " + max_number);
-*/
+
 
 // Задача 6
 //
@@ -63,4 +62,23 @@ if (num1 % 2 == 0)
 else
     Console.WriteLine("Число " + num1 + " - нечетное");
 
+
+
+// Задача 8
+//
+int N, i;
+
+Console.Write("Введите целое число: ");
+N = Convert.ToInt32(Console.ReadLine());
+
+i = 1;
+
+while (i <= N)
+{
+   if (i % 2 == 0)
+   {
+      Console.Write(i + " ");
+   }
+   i = i + 1;
+}
 
