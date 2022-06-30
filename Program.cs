@@ -25,7 +25,7 @@ else
     else
         Console.WriteLine("Введенные числа - равны");
 }    
-*/
+
 
 // Задача 4
 //
@@ -49,3 +49,18 @@ if (num3 > max_number)
     max_number = num3;
 
 Console.WriteLine("Максимальное число - " + max_number);
+*/
+
+// Задача 6
+//
+int num1;
+
+Console.Write("Введите целое число: ");
+num1 = Convert.ToInt32(Console.ReadLine());
+
+if (num1 % 2 == 0)
+    Console.WriteLine("Число " + num1 + " - четное");
+else
+    Console.WriteLine("Число " + num1 + " - нечетное");
+
+
