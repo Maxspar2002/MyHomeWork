@@ -1,71 +1,50 @@
-﻿// Домашнее задание к семинару №1
+﻿// Домашнее задание к семинару №2
 //
-// Задача 2
+// Задача 10
 
-int num1, num2;
-Console.Write("Введите первое число: ");
-num1 = Convert.ToInt32(Console.ReadLine());
+int number, num2;
 
-Console.Write("Введите второе число: ");
-num2 = Convert.ToInt32(Console.ReadLine());
+Console.Write("Введите целое трехзначное число: ");
+number = Convert.ToInt32(Console.ReadLine());
 
-if (num1 > num2)
+num2 = DigNumber2(number);
+Console.WriteLine("Вторая цифра введеннного числа - " + num2);
+
+int DigNumber2 (int num)
 {
-   Console.WriteLine("Большее число - " + num1);
-   Console.WriteLine("Меньшее число - " + num2);
+   int num1, num2;
+   num1 = num : 100;
+   num2 = (num : 10) - num1 * 10
+   return num2;
+}
+
+
+// Задача 4
+//
+
+// Задача 8
+/*
+int N, i;
+
+Console.Write("Введите целое число: ");
+N = Convert.ToInt32(Console.ReadLine());
+
+if (number != 0)
+{
+   num2 = number;
+   Console.WriteLine("Вторая цифра введеннного числа - " + num2);
 }
 else
 {
-    if (num1 < num2)
-    {
-        Console.WriteLine("Большее число - " + num2);
-        Console.WriteLine("Меньшее число - " + num1);
-    }
-    else
-        Console.WriteLine("Введенные числа - равны");
+   Console.WriteLine("Введенное число равно 0 или не является числом!");
 }    
 
 
 // Задача 4
 //
-int num1, num2, num3, max_number;
-
-Console.Write("Введите первое число: ");
-num1 = Convert.ToInt32(Console.ReadLine());
-
-Console.Write("Введите второе число: ");
-num2 = Convert.ToInt32(Console.ReadLine());
-
-Console.Write("Введите третье число: ");
-num3 = Convert.ToInt32(Console.ReadLine());
-
-max_number = num1;
-
-if (num2 > num1)
-    max_number = num2;
-
-if (num3 > max_number)
-    max_number = num3;
-
-Console.WriteLine("Максимальное число - " + max_number);
-
-
-// Задача 6
-//
-int num1;
-
-Console.Write("Введите целое число: ");
-num1 = Convert.ToInt32(Console.ReadLine());
-
-if (num1 % 2 == 0)
-    Console.WriteLine("Число " + num1 + " - четное");
-else
-    Console.WriteLine("Число " + num1 + " - нечетное");
-
-
 
 // Задача 8
-//
+/*
 int N, i;
 
 Console.Write("Введите целое число: ");
@@ -82,3 +61,4 @@ while (i <= N)
    i = i + 1;
 }
 
+*/
