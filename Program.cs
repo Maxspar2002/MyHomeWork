@@ -1,55 +1,48 @@
-﻿// Домашнее задание к семинару №2
+﻿// Домашнее задание к семинару №3
 //
-// Задача 10
-/*
-int number, num2;
+// Задача 19
+// Напишите программу, которая принимает на вход пятизначное число и проверяет, является ли оно палиндромом.
+// 14212 -> нет
+// 23432 -> да
+// 12821 -> да
 
-Console.Write("Введите целое трехзначное число: ");
-number = Convert.ToInt32(Console.ReadLine());
+string number;
 
-num2 = DigNumber2(number);
-Console.WriteLine("Вторая цифра введеннного числа - " + num2);
+Console.Write("Введите целое пятизначное число: ");
+number = Console.ReadLine();
 
-int DigNumber2 (int num)
+CheckNumber (number);
+
+void CheckNumber (string num)
 {
-   int num1, num2;
-   num1 = num / 100;
-   num2 = (num / 10) - num1 * 10;
-   return num2;
+   if (num[0] == num[4] && num[1] == num[3])
+      Console.WriteLine("Введенное число - паллиндром");
+   else
+      Console.WriteLine("Введенное число - НЕ паллиндром");
+}  
+
+
+
+// Задача 23
+// Напишите программу, которая принимает на вход число (N) и выдаёт таблицу кубов чисел от 1 до N.
+// 3 -> 1, 8, 27
+// 5 -> 1, 8, 27, 64, 125
+
+int N, number_i, cube;
+
+Console.Write("Введите целое число: ");
+N = Convert.ToInt32(Console.ReadLine());
+
+cube = 1;
+number_i = 1;
+
+while (number_i <= N)
+{
+   cube = DegreeNumber(number_i,3);
+   Console.Write(cube + ", ");
+   number_i = number_i + 1;
 }
-*/
-
-// Задача 13
-//
-
-int Number, num2, num3, lenght_number;
-
-Console.Write("Введите целое трехзначное число: ");
-Number = Convert.ToInt32(Console.ReadLine());
-
-if (Number > 100)
-{
-   lenght_number = LenghtNumber(Number);
-   num2 = Number / (DegreeNumber(10,lenght_number-2));
-   num3 = (Number / DegreeNumber(10,lenght_number-3)) - num2 * 10;
-   Console.WriteLine("Третья цифра введеннного числа - " + num3);
-}
-else
-{
-   Console.WriteLine("Третьей цифры в введенном числе - нет!");
-}    
-
-int LenghtNumber(int num)
-{
-   int lenght_n = 0;
-
-   while (num != 0)
-   {
-      num = num / 10;
-      lenght_n = lenght_n + 1;
-   }
-   return lenght_n;
-}
+Console.WriteLine("");
 
 int DegreeNumber(int num, int i)
 {
@@ -64,23 +57,3 @@ int DegreeNumber(int num, int i)
    }
    return rezult;
 }
-
-// Задача 8
-/*
-int N, i;
-
-Console.Write("Введите целое число: ");
-N = Convert.ToInt32(Console.ReadLine());
-
-i = 1;
-
-while (i <= N)
-{
-   if (i % 2 == 0)
-   {
-      Console.Write(i + " ");
-   }
-   i = i + 1;
-}
-
-*/
