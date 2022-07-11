@@ -1,27 +1,48 @@
-﻿// Домашнее задание к семинару №3
+﻿// Домашнее задание к семинару №4
 //
-// Задача 19
-// Напишите программу, которая принимает на вход пятизначное число и проверяет, является ли оно палиндромом.
-// 14212 -> нет
-// 23432 -> да
-// 12821 -> да
+// Задача 27: Напишите программу, которая принимает на вход число и выдаёт сумму цифр в числе.
+// 452 -> 11
+// 82 -> 10
+// 9012 -> 12
 
-string number;
+int number;
 
-Console.Write("Введите целое пятизначное число: ");
-number = Console.ReadLine();
+Console.WriteLine("Введите целое число: ");
+number = Convert.ToInt32(Console.ReadLine());
 
-CheckNumber (number);
+Console.WriteLine("Сумма всех цифр числа: " + SummaDigInNumber(number));
 
-void CheckNumber (string num)
+int SummaDigInNumber (int num)
 {
-   if (num[0] == num[4] && num[1] == num[3])
-      Console.WriteLine("Введенное число - паллиндром");
-   else
-      Console.WriteLine("Введенное число - НЕ паллиндром");
-}  
+   int rezult = 0;
+   int lnum = LenghtNumber(num);
+   
+   for (int i = 1; i <= lnum; i++)
+   {
+      rezult = rezult + num % 10;
+      num = num / 10;
+      //Console.WriteLine(num[i]+" "+dig_num+" "+rezult);
+   }
+   return rezult;   
+}
+
+int LenghtNumber (int num)
+{
+   int l_num = 0;
+
+   if (num == 0) l_num = 1;
+
+   while (num != 0)
+      {
+         num = num / 10;
+         l_num = l_num + 1;
+      }
+   return l_num;
+}
 
 
+
+/*
 
 // Задача 23
 // Напишите программу, которая принимает на вход число (N) и выдаёт таблицу кубов чисел от 1 до N.
@@ -57,3 +78,4 @@ int DegreeNumber(int num, int i)
    }
    return rezult;
 }
+*/
