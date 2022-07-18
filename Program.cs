@@ -1,75 +1,125 @@
-﻿// Домашнее задание к семинару № 6
+﻿// Домашнее задание к семинару № 7
 //
-// Задача 41. Пользователь вводит с клавиатуры M чисел. 
-// Посчитайте, сколько чисел больше 0 ввёл пользователь.
-// 0, 7, 8, -2, -2 -> 2
-// -1, -7, 567, 89, 223-> 3
+// Задача 47: Задайте двумерный массив размером m×n, заполненный случайными вещественными числами.
+// m = 3, n = 4.
+// 0,5 7 -2 -0,2
+// 1 -3,3 8 -9,9
+// 8 7,8 -7,1 9
 
-Console.Write("Задайте количество M вводимых чисел: ");
-int M = Convert.ToInt32(Console.ReadLine());
+Console.WriteLine("Задайте размер массива: ");
+Console.Write("Задайте количество строк: ");
+int rows = Convert.ToInt32(Console.ReadLine());
+Console.Write("Задайте количество колонок: ");
+int columns = Convert.ToInt32(Console.ReadLine());
 
-int[] array_number = InputArray(M);
+double[,] array_number = CreateRandomArray(rows, columns, -10, 10); 
+OutputArrayDouble(array_number);
 
-int k_number = 0;
-
-for (int i = 0; i < M; i++)
-   if (array_number[i] > 0) k_number = k_number + 1;
-
-Console.WriteLine("Количество положительных чисел: " + k_number);
-
-int[] InputArray(int size_array)
+double[,] CreateRandomArray(int rows, int columns, int minValue, int maxValue)
 {
-   int[] array = new int[size_array];
-   for (int i = 0; i < size_array; i++)
+   double[,] array = new double[rows, columns];
+
+   for (int i = 0; i < rows; i++)
    {
-      Console.Write($"Введите число {i+1}: ");
-      array[i] = Convert.ToInt32(Console.ReadLine());
+      for (int j = 0; j < columns; j++)
+         array[i,j] = new Random().Next(minValue*100, maxValue*100) / 100d;
    }
    return array;
 }
 
-
-// Задача 43. Напишите программу, которая найдёт точку пересечения двух прямых, 
-// заданных уравнениями y = k1 * x + b1, y = k2 * x + b2; 
-// Значения b1, k1, b2 и k2 задаются пользователем.
-// b1 = 2, k1 = 5, b2 = 4, k2 = 9 -> (-0,5; -0,5)
-
-double[,] array_number = InputArray(2,2);
-double[] array_crosspoint = CrossPoint(array_number);
-PrintRezult(array_number,array_crosspoint);
-
-double[] CrossPoint(double[,] array)
+void OutputArrayDouble (double[,] array)
 {
-   double[] array_xy = new double[2];
-   array_xy[0] = (array[1,1] - array[0,1])/(array[0,0] - array[1,0]); // x = (b2 - b1)/(k1 - k2)
-   array_xy[1] = array[0,0] * array_xy[0] + array[0,1]; // y = k1 * x + b1
-   // Console.WriteLine("Координата x: " + array_xy[0]);
-   return array_xy;
+   for (int i = 0; i < array.GetLength(0); i++)
+   {   
+      for (int j = 0; j < array.GetLength(1); j++)
+      {   
+         Console.Write(array[i,j] + " ");
+         // if (j < columns - 1) Console.Write(", ");
+      }
+   Console.WriteLine("");
+   }
+   Console.WriteLine("");
 }
 
-void PrintRezult(double[,] array, double[] array_xy)
+
+// Задача 50: Напишите программу, которая на вход принимает позиции элемента в двумерном массиве,
+// и возвращает значение этого элемента или же указание, что такого элемента нет.
+// Например, задан массив:
+// 1 4 7 2
+// 5 9 2 3
+// 8 4 2 4
+// 17 -> такого числа в массиве нет
+
+Console.WriteLine("Задайте позиции искомого элемента массива: ");
+Console.Write("Задайте номер строки элемента: ");
+int row = Convert.ToInt32(Console.ReadLine());
+Console.Write("Задайте номер колонки элемента: ");
+int column = Convert.ToInt32(Console.ReadLine());
+
+// double[,] array_number = CreateRandomArray(4, 4, -10, 10); 
+SearchElementInArray(array_number, row, column);
+
+void SearchElementInArray(double[,] array, int row, int col)
 {
-   if (array[0,0] == array[1,0] && array[0,1] == array[1,1])
-      Console.WriteLine($"\nПрямые полностью совпадают");
+   if (row > array.GetLength(0) || col > array.GetLength(1))
+      Console.WriteLine("Такого элемента в массиве нет");
    else
-      if (array[0,0] == array[1,0])
-         Console.WriteLine($"\nПрямые НЕ ПЕРЕСЕКАЮТСЯ !");
-      else
-         Console.WriteLine("Координаты точки пересечения прямых: ("+ array_xy[0] + "; " +array_xy[1]+")");
+      Console.WriteLine("Искомый элемент массива: "+ array[row-1,column-1]);
 }
 
-double[,] InputArray(int size_array1, int size_array2)
+
+// Задача 52: Задайте двумерный массив из целых чисел. Найдите среднее арифметическое элементов в каждом столбце.
+// Например, задан массив:
+// 1 4 7 2
+// 5 9 2 3
+// 8 4 2 4
+// Среднее арифметическое каждого столбца: 4,6; 5,6; 3,6; 3
+
+Console.WriteLine("Задайте размер массива: ");
+Console.Write("Задайте количество строк: ");
+int rows = Convert.ToInt32(Console.ReadLine());
+Console.Write("Задайте количество колонок: ");
+int columns = Convert.ToInt32(Console.ReadLine());
+
+int[,] array_number = CreateRandomArray(rows, columns, 0, 100);
+OutputArray(array_number);
+ArithmeticMeanInArray(array_number);
+
+void ArithmeticMeanInArray(int[,] array)
 {
-   double[,] array = new double[size_array1, size_array2];
-   for (int i = 0; i < size_array1; i++)
+   double sum;
+   double arithmeticMean;
+   for (int j = 0; j < array.GetLength(1); j++)
    {
-      Console.WriteLine($"Введите параметры для {i+1}-го уравнения (y = k * x + b):");
-      
-      Console.Write($"Введите параметр k{i+1}: ");
-      array[i,0] = Convert.ToDouble(Console.ReadLine());
-      
-      Console.Write($"Введите параметр b{i+1}: ");
-      array[i,1] = Convert.ToDouble(Console.ReadLine());
-   }   
+      sum = 0;
+      for (int i = 0; i < array.GetLength(0); i++)
+         sum = sum + Convert.ToDouble(array[i,j]);
+      arithmeticMean = Math.Round(sum / array.GetLength(0),2);
+      Console.WriteLine($"Среднее арифметическое столбца N{j+1}:" + arithmeticMean);
+   }
+}
+
+int[,] CreateRandomArray(int rows, int columns, int minValue, int maxValue)
+{
+   int[,] array = new int[rows, columns];
+
+   for (int i = 0; i < rows; i++)
+   {
+      for (int j = 0; j < columns; j++)
+         array[i,j] = new Random().Next(minValue, maxValue);
+   }
    return array;
+}
+
+void OutputArray (int[,] array)
+{
+   for (int i = 0; i < array.GetLength(0); i++)
+   {   
+      for (int j = 0; j < array.GetLength(1); j++)
+      {   
+         Console.Write(array[i,j] + " ");
+      }
+   Console.WriteLine("");
+   }
+   Console.WriteLine("");
 }
