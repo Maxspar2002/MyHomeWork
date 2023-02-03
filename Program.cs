@@ -1,4 +1,23 @@
-﻿// Домашнее задание к семинару № 8
+﻿// Задайте значения M и N. Напишите программу, 
+// которая выведет все натуральные числа в промежутке от M до N.
+
+Console.Write("Задайте число M: ");
+int M = Convert.ToInt32(Console.ReadLine());
+Console.Write("Задайте число N: ");
+int N = Convert.ToInt32(Console.ReadLine());
+
+void ShowNumber(int num1, int num2)
+{
+   if (num1 < num2)
+      ShowNumber(num1,num2-1);
+   Console.Write(num2+" ");
+}
+ShowNumber(N,M);
+Console.WriteLine(" ");
+
+// Напишите программу, которая на вход принимает два числа A и B, и возводит число А в целую степень B с помощью рекурсии.
+
+// Домашнее задание к семинару № 8
 //
 // Задача 54: Задайте двумерный массив. 
 // Напишите программу, которая упорядочит по убыванию элементы каждой строки двумерного массива.
@@ -10,7 +29,7 @@
 // 1 2 4 7
 // 2 3 5 9
 // 2 4 4 8
-
+/*
 Console.WriteLine("Задайте размер массива: ");
 Console.Write("Задайте количество строк: ");
 int rows = Convert.ToInt32(Console.ReadLine());
@@ -146,7 +165,7 @@ void OutputArray (int[,] array)
    }
    Console.WriteLine("");
 }
-*/
+
 
 // Задача 62: Заполните спирально массив m на n.
 // 1 2 3 4 5
@@ -228,3 +247,4 @@ void OutputArray (int[,] array)
    }
    Console.WriteLine("");
 }
+*/
