@@ -11,43 +11,51 @@
 // [“Russia”, “Denmark”, “Kazan”]  →  []
 
 
-Console.WriteLine("Задайте размер массива: ");
+Console.Write("Задайте размер массива: ");
 int size_array = Convert.ToInt32(Console.ReadLine());
 
-char[] array = InputArray(size_array);
-char[] arrayNew;
-// index = 0
+string[] array = InputArray(size_array);
+string[] arrayNew = new string[size_array];
 
+int index_new = 0;
 for (int index = 0; index < size_array; index++)
  {
-    if array[index].Length() <= 3
-        arrayNew[index] = array[index];
-    else
-        arrayNew[index] = "";      
+    if (array[index].Length <= 3)
+    {
+        arrayNew[index_new] = array[index];
+        index_new = index_new + 1;
+    }          
  }
 
-OutputArray(arrayNew, size_array);
-
-char[] InputArray(int size_array)
+if (index_new == 0)
+    Console.Write("В заданном массиве нет ни одной строки, длина которой меньше, либо равна 3 символам !");
+else
 {
-   char[] array = new char[size_array];
+    Console.Write("Новый массив:");
+    OutputArray(arrayNew, index_new);
+}
+
+
+string[] InputArray(int size_array)
+{
+   string[] array = new string[size_array];
    
    for (int i = 0; i < size_array; i++)
    {
       array[i] = Console.ReadLine();
-      Console.Write(", ");
+    //  Console.Write(", ");
    }
    return array;
 }
 
-void OutputArray (char[] array, size_array)
+void OutputArray (string[] array, int size_array)
 {
    // int size_array = array.Length;
    Console.Write("[");
 
    for (int i = 0; i < size_array; i++)
    {
-      Console.Write(array[i]);
+      Console.Write("'" + array[i] + "'");
       if (i < size_array - 1) 
          Console.Write(", ");
    }
